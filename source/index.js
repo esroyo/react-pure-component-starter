@@ -1,16 +1,21 @@
 import React from 'react';
 import { render } from 'react-dom';
-import createApp from './App';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
-const App = createApp(React);
+import createTodoApp from 'components/todoApp';
+import todoApp from 'store/reducers/todoApp';
 
-const props = {
-  foo: 'yay!  🎸🎶',
-  title: 'Pure Components Rock',
-  helloClass: 'hello'
-};
+const TodoApp = createTodoApp(React);
+const store = createStore(todoApp);
 
 render(
-  <App { ...props }></App>,
-  document.getElementById('root')
+    <Provider store={store}>
+        <TodoApp />
+    </Provider>,
+    document.getElementById('root')
 );
+
+store.subscribe(() => {
+    console.log(store.getState());
+});

@@ -1,4 +1,6 @@
-import './components/title';
-import './components/hello';
-import './App.js';
-import './store/reducers/hello';
+import './actions';
+import './store/reducers/todos';
+import './store/reducers/visibilityFilter';
+import './components/link';
+import './components/todo';
+import './components/todoApp';
